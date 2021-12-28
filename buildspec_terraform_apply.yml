@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.7
+    commands:
+      - tf_version=1.1.0
+      - wget https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip
+      - unzip terraform_1.1.0_linux_amd64.zip
+      - mv terraform /usr/local/bin/
+  build:
+    commands:
+      - terraform --version
+      - terraform init -input=false
+      - terraform apply -auto-approve -input=false
